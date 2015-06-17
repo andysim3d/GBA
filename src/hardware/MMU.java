@@ -162,5 +162,7 @@ public class MMU {
 		;
 	}
 	
-	public void load()
+	public void load(){
+		
+	}
 }
