@@ -68,9 +68,9 @@ public class Z80 {
 		private int r;
 		
 		
-		private int _m;
+		public int _m;
 		private int ime;
-		private int _t;
+		public int _t;
 		
 	};
 	
@@ -79,6 +79,8 @@ public class Z80 {
 	//clock instance;
 	private _Clock _clock;
 	
+	public MMU _mmu;
+	public GPU _gpu;
 	private int _halt;
 	private int _stop;
 	/**
@@ -89,6 +91,25 @@ public class Z80 {
 		this._r = new _R();
 		this._halt = 0;
 		this._stop = 0;
+	}
+	
+	public void setMMU(MMU mmu){
+		this._mmu = mmu;
+	}
+	
+	
+	public void disPatch(){
+		while(true){
+			this.map(this._mmu.rb(this._r.pc ));
+			this._r.pc ++;
+			this._r.pc &= 0xFFFF;
+			this._clock._m += this._r._m;
+			this._clock._t += this._r._t;
+			this._gpu.setp();
+		}
+	}
+	public void map(int addr){
+		//TODO:
 	}
 	/**
 	 * reset clock and register
