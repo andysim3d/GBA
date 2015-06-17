@@ -62,7 +62,7 @@ public class Z80 {
 		private int _h;
 		private int _l;
 		
-		private int pc;
+		int pc;
 		private int sp;
 		private int i;
 		private int r;
@@ -75,7 +75,7 @@ public class Z80 {
 	};
 	
 	//register instance;
-	private _R _r;
+	public _R _r;
 	//clock instance;
 	private _Clock _clock;
 	
@@ -530,6 +530,9 @@ public class Z80 {
 	public void LDrr_la(){
 		LDrr_l('a');
 	}
+	
+	
+	
 	
 	
 	/**
